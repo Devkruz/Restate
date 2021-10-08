@@ -2,6 +2,7 @@
 
 $prim-color: #f69314;
 $sec-color: #777777;
+$secLight-color: #f0f0f0;
 $white: #fff;
 $black: #000;
 $sec-font: "Playfair Display", serif;
@@ -10,13 +11,16 @@ $transition: all 300ms ease;
 
 html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
     
 }
+
 
 body {
     
     max-width: 1500px;
     margin: 0 auto;
+    scroll-behavior: smooth;
    
 }
 
@@ -38,7 +42,7 @@ body {
          .menu_wrapper {
             width: 100%;
             height: 12vh;
-            @include flex-center;
+            @include flex;
             font-family:$prim-font;
             transition: $transition;
             border-bottom:1px solid #bbb ;
@@ -46,10 +50,20 @@ body {
     
             .menu {
                 width:80%;
+                height: 100%;
                 @include flex(row, space-between, center);
                 #hamburger-open {
                     font-size: 1.5rem;
                     cursor: pointer;
+                }
+
+                .logo {
+
+                    a { 
+                        color: $prim-color;
+                        text-decoration: none;
+                        display: block;
+                    }
                 }
     
                 .nav_wrapper {
@@ -57,7 +71,7 @@ body {
                     width: 300px;
                     position: fixed;
                     top:0;
-                    right: -100vw;
+                    right: -300px;
                     // right: 0;
                     height: 100vh;
                     transition: $transition;
@@ -79,11 +93,13 @@ body {
                          #hamburger-close {
                              position:absolute;
                              height: 12vh;
+                             width: 12vh;
                              color:$black;
                              @include flex(row, flex-end, center);
                              padding-right: 2.5rem;
                              top:-4rem;
                              right: -.5rem;
+                             cursor: pointer;
                              border-bottom:1px solid #bbb ;
                              font-size: 1.5rem;
                          }
@@ -106,11 +122,7 @@ body {
                                 
                              }
     
-                             .active {
-                                 color: $prim-color;
-                                 
-                                 
-                             }
+                        
     
                          }
                     }
@@ -133,14 +145,16 @@ body {
                         height: 10vh;
                         width: 70%;
                         background: transparent;
-                        @include flex-center;
+                        @include flex;
                         box-shadow: none;
                        
 
                         .nav {
                             @include flex(row, space-evenly, center);
                             width: 100%;
+                            height: 100%;
                             margin-top: 0;
+                            margin-bottom: 0;
                             position: relative;
                             border-top:none;
 
@@ -158,9 +172,7 @@ body {
                                 }
                               }
                              
-                            .active {
-                                color:white;
-                            }
+                          
 
                            }
                          //scroll > 0 class for the nav links
@@ -174,9 +186,7 @@ body {
                                    }
                                }
 
-                               .active {
-                                   color: $prim-color;
-                               }
+                              
                            }
 
                         }
@@ -201,12 +211,12 @@ body {
         .landing_wrapper {
             width: 100%;
             height: 100vh;
-            @include flex-center();
+            @include flex();
            
            
 
             .landing {
-                width: 400px;
+                width: 350px;
                 // width: 70%;
                 height: 28%;
                 text-align: center;
@@ -251,7 +261,7 @@ body {
      width: 100%;
      height: 85vh;
      background-color: #f8f9fa;
-     @include flex-center;
+     @include flex;
      
      .how-it-work {
          width: 90%;
@@ -365,11 +375,12 @@ body {
 .property_wrapper {
     width: 100%;
     height: fit-content;
-    @include flex-center;
+    @include flex;
     .property {
         
         width: 80%;
         height: 100%;
+        transition:$transition;
         // border: 1px solid red;
 
         // margin: 0 auto;
@@ -399,7 +410,8 @@ body {
             width: 100%;
             height: 100%;
             margin-bottom: 2em;
-            @include flex-center;
+            @include flex;
+            transition: $transition;
 
            .all {
             display: grid;
@@ -417,7 +429,7 @@ body {
 
                     width: 100%;
                     height: 100vh;
-                   
+                     transition: $transition;
                     margin:.2em .2em;
 
                     .slider-img {
@@ -502,3 +514,253 @@ body {
                 
     }
 };
+
+// agent section style
+
+.agent_wrapper {
+    width: 100%;
+    margin-top: 5em;
+    @include flex;
+
+    .agent {
+      
+        @include flex(column, flex-start, center);
+        width: 80%;
+        // padding: 2em;
+
+        .agent-heading_wrapper {
+             margin-bottom: 3em;
+             width: 100%;
+            .agent-title {
+                color: $prim-color;
+                font-size: 2.5em;
+                margin-bottom: .5em;
+               
+            }
+
+            .agent-text {
+                font-family: $prim-font;
+                color:$sec-color;
+                font-size: 1.1em;
+                font-weight: 100;
+                width: 40vw;
+            }
+        }
+
+        .agent-card_wrapper {
+            // padding: 0 2em;
+            width: 100%;
+            display: grid;
+            // justify-content: center;
+            grid-template-columns: 1fr;
+            grid-auto-rows: 70vh;
+            gap:1em;
+            
+             
+    
+
+            .agent-card {
+               width: 100%;
+               background: $secLight-color;
+               @include flex(column, space-between, left);
+
+                .agent-card-img {
+                    width: 100%;
+                    height: 75%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .agent-card-body {
+                    // padding:.5em 0 0 1em;
+                    color: $sec-color;
+                    margin-left:1em;
+                    margin-bottom:1em;
+                    
+                    .agent-name {
+                        margin:0;
+                    }
+
+                    .agent-position {
+                       font-family: $prim-font;
+                       font-size: 12px;
+                       margin: 0;
+                    }
+                } 
+            }
+        }
+    }
+}
+
+@media (min-width:550px) {
+    
+    .agent_wrapper {
+
+        .agent {
+
+           
+
+            .agent-card_wrapper {
+             
+                grid-template-columns:minmax(210px, 300px) minmax(210px, 300px);
+                grid-auto-rows: 50vh;
+
+               
+                
+            }
+        }
+    }
+
+
+}
+
+@media (min-width:750px) {
+    
+    .agent_wrapper {
+
+        .agent {
+
+           
+
+            .agent-card_wrapper {
+             
+                grid-template-columns:minmax(1fr, 300px) minmax(1fr, 300px) minmax(1fr, 300px);
+                grid-auto-rows: 50vh;
+
+               
+                
+            }
+        }
+    }
+
+}
+
+@media (min-width:1000px) {
+    
+    .agent_wrapper {
+
+        .agent {
+
+           
+
+            .agent-card_wrapper {
+             
+                grid-template-columns:1fr 1fr 1fr;
+                grid-auto-rows: 70vh;
+
+               
+                
+            }
+        }
+    }
+}
+
+
+//Aout us section style
+
+.about_wrapper{
+    width: 100%;
+    @include flex;
+    border-top: 1px solid #bbb;
+    margin-top: 10em;
+    padding-top: 5em;
+
+    .about {
+        width: 80%;
+
+        .about-img_wrapper {
+            display: none;
+        }
+
+        .about-info_wrapper {
+            width: 100%;
+
+            .about-info {
+                width: 100%;
+
+                .about-info-heading {
+                     color: $prim-color;
+                }
+
+                .about-info-description {
+                    font-family: $prim-font;
+                    color:$sec-color;
+                    font-size: 14px;
+                    font-weight: 100;
+                }
+
+                .about-info-list {
+                    font-family: $prim-font;
+                    color:$sec-color;
+                    font-size: 16px;
+                    font-weight: 100;
+
+                    li {
+                        margin-top: 1em;
+                    }
+                    
+                }
+
+                .about-info-btn {
+                    @include btn-default($prim-color);
+                    margin-top: 2em;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 700px) {
+     
+     .about_wrapper .about {
+      @include flex(row, space-between, center);
+
+        .about-img_wrapper {
+            display: block;
+             width: 40vw;
+             max-width: 350px;
+             height: 70vh;
+             margin-right: 5em;
+
+             img {
+                 width: 100%;
+                 height: 100%;
+             }
+        }
+
+        .about-info_wrapper {
+            width:40vw;
+        }
+     }
+}
+
+.service_wrapper {
+    width: 100%;
+    @include flex;
+    background:$secLight-color;
+    margin-top: 10em;
+
+    .service {
+        width: 80%;
+        @include flex(column, flex-start, center);
+
+        .service-heading {
+            color: $prim-color;
+            font-size: 2.5em;
+        }
+
+        .service-card_wrapper {
+              display: grid;
+              grid-template-columns: 1fr;
+              grid-auto-rows: 50vh;
+
+              .service-card {
+                  width: 100%;
+              }
+        }
+    }
+}
