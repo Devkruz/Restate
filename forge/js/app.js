@@ -3,21 +3,21 @@ $(function() {
     const serviceData = [
     {
         id: 1,
-        icon: "",
+        icon: "fas fa-home",
         heading: "Search Property",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
         learnMoreURL: "",
     },
     {
         id: 2,
-        icon: "",
+        icon: "fas fa-dollar-sign",
         heading: "Buy Property",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
         learnMoreURL: "",
     },
     {
         id: 3,
-        icon: "",
+        icon: "fas fa-chart-line",
         heading: "Investing",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
         learnMoreURL: "",
@@ -82,7 +82,7 @@ $(function() {
     //Initializing slick element with config
     propertySlider.slick(slickConfig);
 
-
+    // property view all btn logic
     propertyViewBtn.click((e) => {
       if(viewAll) {
         propertySlider.slick("unslick");
@@ -151,7 +151,9 @@ $(function() {
                 background: "#fff",
                 color: "#000",
                 position: "fixed",
-                boxShadow: "0px 0px 5px 0px black",  
+                boxShadow: "0px 0px 5px 0px black", 
+               
+              
             });
 
             menu_wrapper.find(".page").addClass("down");
@@ -187,16 +189,17 @@ $(function() {
            $(document).trigger("scroll");
 
       //Loading service section DOM
-      
+      let tempCont = new DocumentFragment();
       serviceData.forEach(data => {
-          const content = serviceCardWrapperCont.content.cloneNode(true);
-             console.log(content)
-             content.querySelector(".heading").append(data.heading);
-             content.querySelector(".description").append(data.description);
-             serviceCardWrapper.append(content);
+             const template = serviceCardWrapperCont.content.cloneNode(true);
+             template.querySelector(".heading").append(data.heading);
+             template.querySelector(".description").append(data.description);
+             template.querySelector(".symbol").setAttribute("class", `symbol ${data.icon}`);
+             tempCont.appendChild(template);
+          
       });
       
-
+      serviceCardWrapper.append(tempCont);
       
 
 

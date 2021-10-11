@@ -12,6 +12,8 @@ $transition: all 300ms ease;
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    max-width: 1500px;
+    margin: 0 auto;
     
 }
 
@@ -31,12 +33,14 @@ body {
     height: 100vh;
     background: #fff url('https://onclickwebdesign.com/wp-content/uploads/hero_1.jpg') no-repeat top/cover ;
     color: #fff;
+    // position: relative;
     
     .landing-page {
          width: 100%;
          height: 100%;
         //  @include flex(column, space-between, center);
          background: rgba(52, 58, 64, 0.9);
+        //  position: relative;
         //  z-index: 1;
         
          .menu_wrapper {
@@ -116,7 +120,7 @@ body {
                                  font-weight: 400;
                                  font-size: 1.2rem;
 
-                                 &:hover {
+                                 &:hover{
                                      color:$prim-color;
                                  }
                                 
@@ -520,6 +524,7 @@ body {
 .agent_wrapper {
     width: 100%;
     margin-top: 5em;
+    padding-top: 2em;
     @include flex;
 
     .agent {
@@ -665,7 +670,7 @@ body {
     width: 100%;
     @include flex;
     border-top: 1px solid #bbb;
-    margin-top: 10em;
+    margin-top: 5em;
     padding-top: 5em;
 
     .about {
@@ -742,25 +747,192 @@ body {
     width: 100%;
     @include flex;
     background:$secLight-color;
-    margin-top: 10em;
+    margin-top: 5em;
 
     .service {
         width: 80%;
         @include flex(column, flex-start, center);
+        font-family: $prim-font;
 
         .service-heading {
             color: $prim-color;
             font-size: 2.5em;
+            margin-top: 2em;
+            font-family:$sec-font;
         }
 
         .service-card_wrapper {
               display: grid;
+            //   justify-content: center;
               grid-template-columns: 1fr;
-              grid-auto-rows: 50vh;
+              grid-auto-rows: auto;
+              
 
               .service-card {
                   width: 100%;
+                  margin-bottom: 2em;
+                  @include flex(row, space-between, center);
+
+                 .service-card-icon_wrapper {
+                      width: 100px;
+                      margin-right: 1em;
+                  }
+
+                  .service-card-icon_wrapper .symbol {
+                      font-size: 3em;
+                       color: $prim-color;
+                      
+                  }
+
+                  .service-card-body {
+
+                     .heading {
+                         font-size: 1.5em;
+                         color:$sec-color;
+                     }
+
+                     .description {
+                         font-size: 14px;
+                         color: $sec-color;
+                         font-weight: 100;
+                     }
+
+                     .service-btn {
+                         @include btn-default($secLight-color, $prim-color);
+                         padding: 0;
+                     }
+                  }
               }
         }
     }
+}
+
+@media (min-width:700px) {
+
+  .service_wrapper .service .service-card_wrapper {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2em;
+        
+    }
+    
+}
+
+
+
+
+.contact_wrapper {
+    width: 100%;
+    background:$white;
+    padding-top: 2em;
+    @include flex;
+
+    .contact {
+        width: 80%;
+        @include flex(column, flex-start, center);
+
+
+        .contact-heading_wrapper .contact-heading {
+               color: $prim-color;
+               font-size: 2.5em;
+        }
+
+        .contact-form_wrapper {
+              display: grid;
+              grid-template-columns: 1.8fr 1fr;
+              grid-auto-rows: auto;
+              column-gap: 1em;
+
+              .form-input {
+                    background: $white;
+                    @include flex(column, flex-start, center);
+                    border-radius: 5px;
+                    background:$secLight-color;
+
+                    .form-input-heading {
+                         font-family: $prim-font;
+                         font-size: 1.8em;
+                         color:$sec-color;
+                    }
+ 
+                    .contact-form-input {
+                      width: 100%;
+                      padding:0em 2em 2em 2em;
+                      
+                        label {
+                            width: 100%;
+                            font-family: $prim-font;
+                        }
+
+                        #form-submit {
+                             @include btn-default($prim-color);
+                        }
+
+                        input, textarea {
+                            @include form-input;
+                            margin-bottom: 1em;
+                            
+                       }
+   
+                       textarea {
+                              resize: none;
+                       }
+
+                    }
+              }
+
+
+
+              .address_wrapper {
+                      background:$secLight-color;
+                      padding: 2em;
+                      height: fit-content;
+                      border-radius: 5px;
+
+                      .address-details, .phone-details, .email-details {
+                            margin-bottom: 2em;
+                      }
+
+                      .address-details-heading, .phone-details-heading, .email-details-heading {
+                            font-family: $prim-font;
+                            font-weight: 500;
+                            margin: .2em 0 .2em 0;
+                      }
+
+                      .address-details-info, .phone-details-info, .email-details-info {
+                            font-weight: 300;
+                            margin: .2em 0 .2em 0;
+                            color:$sec-color;
+                      }
+              }
+        }
+    }
+}
+
+@media (max-width:600px) {
+    
+    .contact_wrapper {
+        
+        .contact {
+    
+            .contact-form_wrapper {
+                
+                  grid-template-columns: 1fr;
+                  row-gap: 2em;
+                  
+                
+            }    
+
+        }
+    }
+
+}
+
+footer {
+    font-family: $prim-font;
+     width: 100%;
+     height: 10vh;
+     @include flex;
+     color:$white;
+     background: #333;
+     margin-top: 2em;
 }
