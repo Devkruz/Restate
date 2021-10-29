@@ -7,13 +7,14 @@ $white: #fff;
 $black: #000;
 $sec-font: "Playfair Display", serif;
 $prim-font:  "Roboto", "Helvetica", "Sans-serif";
-$transition: all 300ms ease;
+$transition: all 500ms ease-in-out;
 
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
     max-width: 1500px;
     margin: 0 auto;
+
     
 }
 
@@ -47,6 +48,7 @@ body {
             width: 100%;
             height: 12vh;
             @include flex;
+            // position: fixed;
             font-family:$prim-font;
             transition: $transition;
             border-bottom:1px solid #bbb ;
@@ -104,12 +106,19 @@ body {
                              top:-4rem;
                              right: -.5rem;
                              cursor: pointer;
-                             border-bottom:1px solid #bbb ;
+                            //  border-bottom:1px solid #bbb ;
                              font-size: 1.5rem;
                          }
+                          
+                        
 
                          .page {
+                        
                              list-style: none;
+
+                             .active {
+                                color: $prim-color;
+                            }
                             
                              a {
                                  text-decoration: none;
@@ -385,6 +394,7 @@ body {
         width: 80%;
         height: 100%;
         transition:$transition;
+        position:relative;
         // border: 1px solid red;
 
         // margin: 0 auto;
@@ -395,6 +405,7 @@ body {
             @include flex(row, space-between, center);
             margin-top: 2rem;
             margin-bottom: 2rem;
+           
 
             .property-heading {
                 color: $prim-color;
@@ -406,6 +417,19 @@ body {
 
                 .pre, .next {
                     cursor: pointer;
+                    position:absolute;
+                    z-index: 3;
+                    top:44%;
+                    font-size: 2em;
+                    color:$sec-color;
+                }
+
+                .pre {
+                     left:-35px;
+                }
+
+                .next {
+                    right:-35px;
                 }
             }
         }
@@ -432,7 +456,7 @@ body {
                 .slider-card {
 
                     width: 100%;
-                    height: 100vh;
+                    height: 80vh;
                      transition: $transition;
                     margin:.2em .2em;
 

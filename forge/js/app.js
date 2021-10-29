@@ -1,125 +1,61 @@
+ // service section data
+import serviceData from "./serviceData.js";
+//slick config 
+import slickConfig from "./slickConfig.js";
 $(function() {
-  // service section data
-    const serviceData = [
-    {
-        id: 1,
-        icon: "fas fa-home",
-        heading: "Search Property",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
-        learnMoreURL: "",
-    },
-    {
-        id: 2,
-        icon: "fas fa-dollar-sign",
-        heading: "Buy Property",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
-        learnMoreURL: "",
-    },
-    {
-        id: 3,
-        icon: "fas fa-chart-line",
-        heading: "Investing",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
-        learnMoreURL: "",
-    }
-
-    ];
-
-    console.log("Ready");
-    const menu_wrapper = $(".menu_wrapper");
-    const hamburgerOpen = menu_wrapper.find("#hamburger-open");
-    const hamburgerClose = menu_wrapper.find("#hamburger-close");
+    const $menu_wrapper = $(".menu_wrapper");
+    const $hamburgerOpen = $menu_wrapper.find("#hamburger-open");
+    const $hamburgerClose = $menu_wrapper.find("#hamburger-close");
     const serviceCardWrapper = document.getElementById('service-card_wrapper');
     const serviceCardWrapperCont = document.getElementById('service-card_wrapper-content');
-
-    const nav = menu_wrapper.find(".nav_wrapper");
-    // const propertySlider = $(".slider_wrapper");
-    const propertySlider = $(".slider");
-    const propertyViewBtn = $(".view-all-btn");
-    const slickConfig = {
-       
-      infinite: true,
-      prevArrow: $(".pre"),
-      nextArrow: $(".next"),
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      // mobileFirst: true,
-      autoplaySpeed: 2000,
-      autoplay: true,
-      pauseOnHover: true,
-      speed: 500,
-      cssEase: 'ease-out',
-      responsive: [
-          {
-            breakpoint: 1000,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-             
-            }
-          },
-
-          {
-            breakpoint: 650,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              autoplaySpeed: 2000,
-              autoplay: true,
-              pauseOnHover: true,
-            }
-          },
-         
-        ],
-      
-    };
+    const $nav = $menu_wrapper.find(".nav_wrapper");
+    const $propertyWrapper = $(".property_wrapper");
+    const $propertySlider = $propertyWrapper.find(".slider");
+    const $sliderBtn = $propertyWrapper.find(".slider-btn");
+    const $propertyViewBtn = $propertyWrapper.find(".view-all-btn");
     let viewAll = true;
 
-
-
     //Initializing slick element with config
-    propertySlider.slick(slickConfig);
+    $propertySlider.slick(slickConfig);
 
     // property view all btn logic
-    propertyViewBtn.click((e) => {
+    $propertyViewBtn.click((e) => {
       if(viewAll) {
-        propertySlider.slick("unslick");
-        propertySlider.addClass("all");
+        $propertySlider.slick("unslick");
+        $propertySlider.addClass("all");
+        $sliderBtn.css({
+          display: "none",
+        })
         viewAll = false;
-        propertyViewBtn.text("Less Propery Listings");
+        $propertyViewBtn.text("Less Propery Listings");
       }else {
-        propertySlider.slick(slickConfig);
-        propertySlider.removeClass("all");
+        $propertySlider.slick(slickConfig);
+        $propertySlider.removeClass("all");
+        window.location.href = "#property";
+        $sliderBtn.css({
+          display: "block",
+        })
         viewAll = true;
-        propertyViewBtn.text("More Propery Listings");
+        $propertyViewBtn.text("More Propery Listings");
       }
-      // }if(viewAll == false) {
-      //   propertySlider.slick(slickConfig);
-      //   propertySlider.removeClass("all");
-      //   viewAll = true;
-      // }
-
-
   });
 
 
     
 
     //Menu open logic
-    hamburgerOpen.click(() => {
-         nav.css({
+    $hamburgerOpen.click(() => {
+         $nav.css({
              right: "0",
+             transition: "all 500ms ease",
          });
-
-         
     });
 
   //close menu logic
-    hamburgerClose.click(() => {
-         nav.css({
+    $hamburgerClose.click(() => {
+         $nav.css({
              right: "-300px",
+             transition: "all 500ms ease",
          });
 
         
@@ -132,7 +68,7 @@ $(function() {
 
          if(!containsNavWrapper && !target.matches("#hamburger-open") && !target.matches(".logo")) {
 
-            nav.css({
+            $nav.css({
                 right: "-100vh",
             })
                return false;
@@ -147,35 +83,34 @@ $(function() {
         let scrollTop = $(document).scrollTop();
        
         if(scrollTop > 0) {
-            menu_wrapper.css({
+            $menu_wrapper.css({
                 background: "#fff",
                 color: "#000",
                 position: "fixed",
                 boxShadow: "0px 0px 5px 0px black", 
                
-              
             });
 
-            menu_wrapper.find(".page").addClass("down");
+            $menu_wrapper.find(".page").addClass("down");
 
         }
         if(scrollTop > 250) {
-                menu_wrapper.css({
+                $menu_wrapper.css({
                 height: "8vh",    
             }) 
 
            
         }
         if(scrollTop < 1 ){
-            menu_wrapper.css({
+            $menu_wrapper.css({
                 background: "transparent",
                 color: "#fff",
-                position: "static",
+                position: "fixed",
                 height: "12vh",
                 boxShadow: "none"
             });
              
-            menu_wrapper.find(".page").removeClass("down")
+            $menu_wrapper.find(".page").removeClass("down")
          
         }        
     });
@@ -201,12 +136,7 @@ $(function() {
       
       serviceCardWrapper.append(tempCont);
       
-
-
-
-
     };
- 
 
     
 })
