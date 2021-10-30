@@ -11,6 +11,8 @@
     <!--Slick_slider_css version @ 1.8.1 -->
     <link rel="stylesheet" type="text/css" 
     href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!--AOS - Animate on scroll library@ NEXT -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!--Custom css-->
     <link rel="stylesheet" href="./css/main.css">
     <title>Restate | Home</title>
@@ -25,13 +27,13 @@
                 <div class="menu">
 
                 
-                    <h1 class="logo"><a href="#" class="logo">Restate</a></h1>
+                    <h1 class="logo"><a href="/forge/index.html" class="logo">Restate</a></h1>
                   
                     
                     <div class="nav_wrapper">
                       <ul class="nav ">
                        
-                        <li class="page"><a href="#property">Properties</a></li>
+                        <li class="page active"><a href="#property" class="activ">Properties</a></li>
                         <li class="page"><a href="#agent">Agents</a></li>
                         <li class="page"><a href="#about">About</a></li>
                         <li class="page"><a href="#service">Service</a></li>
@@ -46,7 +48,10 @@
             </div>
     
             <div class="landing_wrapper" id ="home">
-                <div class="landing">
+                <div class="landing" 
+                data-aos="slide-up" 
+                data-aos-offset=""
+               >
                    
                     <h1 class="landing-heading">
                         Buy and sell real estate properties
@@ -57,22 +62,21 @@
                            Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
                 </p>
 
-
                 </div>
             </div>
 
         </div>
     </div>
 
-
+                               <!-----------------------How it Works---------------------------------->
 <div class="how-it-work_wrapper">
     <div class="how-it-work">
 
-        <h1 class="how-it-work-heading">
+        <h1 class="how-it-work-heading" data-aos="fade-up">
             How It Works
         </h1>
 
-        <div class="how-it-work-card_wrapper">
+        <div class="how-it-work-card_wrapper" data-aos="slide-left">
 
             <div class="how-it-work-card">
                 <div class="symbol">
@@ -124,9 +128,12 @@
                  Property
              </h1>
 
-             <div class="slider-btn">
-                 <span class="pre slick-prev">PREVIOUS</span> /
-                 <span class="next slick-nex">NEXT</span>
+             <div class="slider-btn"
+              data-aos="fade-out"
+              data-aos-delay="1000"
+              >
+                 <span class="pre slick-prev fas fa-angle-double-left" ></span> 
+                 <span class="next slick-nex fas fa-angle-double-right"></span>
              </div>
 
         </div>
@@ -213,11 +220,15 @@
 
             </div>
         </div>
-        <form action="">
-            <div class="view-all-btn_wrapper">
-             <button class="view-all-btn">More Propery Listings</button>
-            </div>
-        </form>
+
+        <div  
+
+        data-aos-offset="100"
+        >
+                <div class="view-all-btn_wrapper">
+                 <button class="view-all-btn" data-scroll>More Propery Listings</button>
+                </div>
+        </div>
         
         
     </div>
@@ -231,7 +242,7 @@
 
          <div class="agent-heading_wrapper">
              
-             <div class="agent-heading">
+             <div class="agent-heading" >
                 <h1 class="agent-title">Agents</h1>
                 <p class="agent-text">Lorem ipsum dolor sit amet consectetur 
                     adipisicing elit. Minus minima neque tempora reiciendis</p>
@@ -239,7 +250,7 @@
              
          </div>
 
-         <div class="agent-card_wrapper">
+         <div class="agent-card_wrapper" >
 
              <div class="agent-card">
 
@@ -288,7 +299,7 @@
 <div class="about_wrapper" id="about">
     <div class="about">
 
-        <div class="about-img_wrapper">
+        <div class="about-img_wrapper" >
              <img src="./img/property_2.jpg" alt="" class="about-img">
         </div>
 
@@ -321,7 +332,7 @@
     </div>
 </div>
 
-<div class="service_wrapper" id="service">
+<div class="service_wrapper" id="service" >
    <div class="service">
           
        <h1 class="service-heading">
@@ -352,7 +363,7 @@
 </div>
 
 
-<div class="contact_wrapper" id = "contact">
+<div class="contact_wrapper" id="contact" >
      <div class="contact">
 
          <div class="contact-heading_wrapper">
@@ -434,9 +445,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" 
 integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" 
 crossorigin="anonymous"></script>
+<!--sweet scroll library-->
+<script src="https://unpkg.com/sweet-scroll/sweet-scroll.min.js"></script>
+<!--AOS - Animate on scroll library-->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({duration: 1200,});
+</script>
 <!--Slick_slider_js version @ 1.8.1 -->
 <script type="text/javascript" 
 src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <!--Custom js-->
-<script type = "module"src="./js/app.js"></script>
+<script type="module" src="./js/app.js"></script>
 </html>
