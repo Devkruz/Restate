@@ -29,8 +29,8 @@ $(function() {
         viewAll = false;
         $propertyViewBtn.text("Less Propery Listings");
       }else {
-        $propertySlider.slick(slickConfig);
         $propertySlider.removeClass("all");
+        $propertySlider.slick(slickConfig);
         window.location.href = "#property";
         $sliderBtn.css({
           display: "block",
@@ -61,6 +61,7 @@ $(function() {
         
     });
 
+ 
    // Logic close menu when any other element is click apart from the menu and menu open
     $(document).click((e) => {
          const target = e.target;
@@ -69,7 +70,8 @@ $(function() {
          if(!containsNavWrapper && !target.matches("#hamburger-open") && !target.matches(".logo")) {
 
             $nav.css({
-                right: "-100vh",
+                right: "-300px",
+                transition: "all 500ms ease",
             })
                return false;
          } 
