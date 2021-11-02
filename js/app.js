@@ -9,6 +9,7 @@ $(function() {
     const serviceCardWrapper = document.getElementById('service-card_wrapper');
     const serviceCardWrapperCont = document.getElementById('service-card_wrapper-content');
     const $nav = $menu_wrapper.find(".nav_wrapper");
+    const $navBefore = $nav.find("#before");
     const $propertyWrapper = $(".property_wrapper");
     const $propertySlider = $propertyWrapper.find(".slider");
     const $sliderBtn = $propertyWrapper.find(".slider-btn");
@@ -54,25 +55,36 @@ $(function() {
   //close menu logic
     $hamburgerClose.click(() => {
          $nav.css({
-             right: "-300px",
+             right: "-160vw",
              transition: "all 500ms ease",
          });
 
         
     });
 
-   // Logic close menu when any other element is click apart from the menu and menu open
-    $(document).click((e) => {
-         const target = e.target;
-         const containsNavWrapper = target.closest(".nav_wrapper");
+ 
+   // Logic close menu when any other element is click apart from the menu and menu open: first approach
+    // $(document).click((e) => {
+    //      const target = e.target;
+    //      const containsNavWrapper = target.closest(".nav_wrapper");
 
-         if(!containsNavWrapper && !target.matches("#hamburger-open") && !target.matches(".logo")) {
+    //      if(!containsNavWrapper && !target.matches("#hamburger-open") && !target.matches(".logo")) {
+
+    //         $nav.css({
+    //             right: "-100vw",
+    //             transition: "all 500ms ease",
+    //         })
+    //            return false;
+    //      } 
+    // });
+
+    $($navBefore).click((e) => {
 
             $nav.css({
-                right: "-100vh",
+                right: "-160vw",
+                transition: "all 500ms ease",
             })
-               return false;
-         } 
+      
     });
 
  

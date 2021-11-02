@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   max-width: 1500px;
   margin: 0 auto;
   scroll-behavior: smooth;
@@ -62,10 +63,18 @@ body {
   width: 300px;
   position: fixed;
   top: 0;
-  right: -300px;
+  right: -160vw;
   height: 100vh;
   transition: all 600ms ease-in-out;
   box-shadow: -0.5px 0px 5px 1px black;
+}
+.landing-page_wrapper .landing-page .menu_wrapper .menu .nav_wrapper #before {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(119, 119, 119, 0.5);
+  position: absolute;
+  top: 0;
+  right: 300px;
 }
 .landing-page_wrapper .landing-page .menu_wrapper .menu .nav_wrapper .nav {
   display: flex;
@@ -125,6 +134,9 @@ body {
     justify-content: space-evenly;
     align-items: center;
     box-shadow: none;
+  }
+  .landing-page_wrapper .landing-page .menu_wrapper .menu .nav_wrapper #before {
+    display: none;
   }
   .landing-page_wrapper .landing-page .menu_wrapper .menu .nav_wrapper .nav {
     display: flex;
@@ -299,7 +311,7 @@ body {
 }
 .property_wrapper .property {
   width: 80%;
-  height: 100%;
+  height: fit-content;
   transition: all 600ms ease-in-out;
   position: relative;
   display: flex;
@@ -338,7 +350,6 @@ body {
 }
 .property_wrapper .property .slider_wrapper {
   width: 100%;
-  height: 100%;
   margin-bottom: 2em;
   display: flex;
   flex-direction: row;
@@ -369,6 +380,7 @@ body {
 .property_wrapper .property .slider_wrapper .slider .slider-card .slider-img img {
   width: 100%;
   height: 100%;
+  border-radius: 4px;
 }
 .property_wrapper .property .slider_wrapper .slider .slider-card .slider-body {
   width: 100%;
