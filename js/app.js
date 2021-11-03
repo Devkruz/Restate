@@ -1,7 +1,9 @@
  // service section data
 import serviceData from "./serviceData.js";
+//-----------
 //slick config 
 import slickConfig from "./slickConfig.js";
+//----------
 $(function() {
     const $menu_wrapper = $(".menu_wrapper");
     const $hamburgerOpen = $menu_wrapper.find("#hamburger-open");
@@ -18,6 +20,7 @@ $(function() {
 
     //Initializing slick element with config
     $propertySlider.slick(slickConfig);
+    //--------------------------------
 
     // property view all btn logic
     $propertyViewBtn.click((e) => {
@@ -40,30 +43,33 @@ $(function() {
         $propertyViewBtn.text("More Propery Listings");
       }
   });
+  //------------------------------------
 
 
     
 
-    //Menu open logic
+    //Menu open logic-----------------
     $hamburgerOpen.click(() => {
          $nav.css({
              right: "0",
              transition: "all 500ms ease",
          });
     });
+    //-----------------------------
 
-  //close menu logic
+  //close menu logic----------
     $hamburgerClose.click(() => {
          $nav.css({
-             right: "-160vw",
+             right: "-190vw",
              transition: "all 500ms ease",
          });
 
         
     });
+    //-----------------
 
  
-   // Logic close menu when any other element is click apart from the menu and menu open: first approach
+   // Logic close menu when any other element is click apart from the menu and menu open: first approach----------
     // $(document).click((e) => {
     //      const target = e.target;
     //      const containsNavWrapper = target.closest(".nav_wrapper");
@@ -77,19 +83,23 @@ $(function() {
     //            return false;
     //      } 
     // });
+    //-----------------------------
 
+
+   // Logic close menu when any other element is click apart from the menu and menu open: new approach----------
     $($navBefore).click((e) => {
 
             $nav.css({
-                right: "-160vw",
+                right: "-190vw",
                 transition: "all 500ms ease",
             })
       
     });
+    //------------------------------------------------------------------------------------------------------------
 
  
 
- // Menu scroll logic
+ // Menu scroll logic--------------------------------------------------------------------------------------------
     $(document).scroll(() => {
      
         let scrollTop = $(document).scrollTop();
@@ -127,15 +137,16 @@ $(function() {
         }        
     });
 
-  
-    window.onload = () => {
-      // fireing the scroll logic onload of the document
-        //vanilla way of triggering an event
-        //  document.scroll();
-         //jQuery way of triggering an event
-           $(document).trigger("scroll");
+    //------------------------------------------------------------------------------------------------------------
 
-      //Loading service section DOM
+
+     //jQuery way of triggering an event-------------
+       $(document).trigger("scroll");
+     //-------------------------------------------
+  
+
+     //Loading service section DOM
+     (function() {
       let tempCont = new DocumentFragment();
       serviceData.forEach(data => {
              const template = serviceCardWrapperCont.content.cloneNode(true);
@@ -145,12 +156,12 @@ $(function() {
              tempCont.appendChild(template);
           
       });
-      
       serviceCardWrapper.append(tempCont);
-      
-    };
-
+     })();
+     //---------------------
     
+
+     greet("tony")
 })
 
 

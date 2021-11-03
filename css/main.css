@@ -63,7 +63,7 @@ body {
   width: 300px;
   position: fixed;
   top: 0;
-  right: -160vw;
+  right: -190vw;
   height: 100vh;
   transition: all 600ms ease-in-out;
   box-shadow: -0.5px 0px 5px 1px black;
@@ -350,6 +350,7 @@ body {
 }
 .property_wrapper .property .slider_wrapper {
   width: 100%;
+  height: 100%;
   margin-bottom: 2em;
   display: flex;
   flex-direction: row;
@@ -361,15 +362,18 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 80vh;
+  row-gap: 4em;
   transition: all 3000 ease;
 }
 .property_wrapper .property .slider_wrapper .slider {
   width: 90%;
+  height: 100%;
+  margin-bottom: 2em;
   transition: all 600ms ease-in-out;
 }
 .property_wrapper .property .slider_wrapper .slider .slider-card {
   width: 100%;
-  height: 80vh;
+  height: 100%;
   transition: all 600ms ease-in-out;
   margin: 0.2em 0.2em;
 }
