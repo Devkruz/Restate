@@ -10,17 +10,47 @@ $(function() {
     const $hamburgerClose = $menu_wrapper.find("#hamburger-close");
     const serviceCardWrapper = document.getElementById('service-card_wrapper');
     const serviceCardWrapperCont = document.getElementById('service-card_wrapper-content');
-    const $nav = $menu_wrapper.find(".nav_wrapper");
-    const $navBefore = $nav.find("#before");
+    const $navWrapper = $menu_wrapper.find(".nav_wrapper");
+    const $navBefore = $navWrapper.find("#before");
     const $propertyWrapper = $(".property_wrapper");
     const $propertySlider = $propertyWrapper.find(".slider");
     const $sliderBtn = $propertyWrapper.find(".slider-btn");
     const $propertyViewBtn = $propertyWrapper.find(".view-all-btn");
+    const $navLinks = $(".nav a");
     let viewAll = true;
 
     //Initializing slick element with config
     $propertySlider.slick(slickConfig);
     //--------------------------------
+
+    // Smooth scroll logic using jquery-----------
+    //  $navLinks.click(function(e) {
+    //        e.preventDefault();
+    //        const target = $(this.hash);
+    //        console.log(target.offset().top)
+    //       $("html, body").animate(
+    //         {
+    //            scrollTop: target.offset().top,
+    //         },
+    //        1000,
+    //        "swing"
+    //       )
+    //  });
+    //-------------------------------------------
+
+
+    // Smooth scroll logic using smooth-scroll libary
+      var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 1000,
+            speedAsDuration: true,
+            ease: "cubic",
+            
+      });
+    //--------------------------
+
+
+
+ 
 
     // property view all btn logic
     $propertyViewBtn.click((e) => {
@@ -50,7 +80,7 @@ $(function() {
 
     //Menu open logic-----------------
     $hamburgerOpen.click(() => {
-         $nav.css({
+         $navWrapper.css({
              right: "0",
              transition: "all 500ms ease",
          });
@@ -59,7 +89,7 @@ $(function() {
 
   //close menu logic----------
     $hamburgerClose.click(() => {
-         $nav.css({
+         $navWrapper.css({
              right: "-190vw",
              transition: "all 500ms ease",
          });
@@ -89,7 +119,7 @@ $(function() {
    // Logic close menu when any other element is click apart from the menu and menu open: new approach----------
     $($navBefore).click((e) => {
 
-            $nav.css({
+            $navWrapper.css({
                 right: "-190vw",
                 transition: "all 500ms ease",
             })
@@ -98,13 +128,14 @@ $(function() {
     //------------------------------------------------------------------------------------------------------------
 
  
-
+  
  // Menu scroll logic--------------------------------------------------------------------------------------------
-    $(document).scroll(() => {
+    $(document).scroll(function(){
      
         let scrollTop = $(document).scrollTop();
-       
+        
         if(scrollTop > 0) {
+        
             $menu_wrapper.css({
                 background: "#fff",
                 color: "#000",
@@ -159,9 +190,7 @@ $(function() {
       serviceCardWrapper.append(tempCont);
      })();
      //---------------------
-    
-
-     greet("tony")
+  
 })
 
 
